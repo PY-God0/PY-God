@@ -80,7 +80,11 @@ export default function FeeCalculator() {
       const netProfitKw = feeReductionKw - couponPriceKw;
       const finalIncome = incomeWithoutCoupon + kwToE(feeReductionKw) - kwToE(couponPriceKw);
       return {
-        ...d,
+        id: d.id,
+        label: d.label,
+        desc: d.desc,
+        rate: d.rate,
+        priceKw: d.priceKw,
         couponPriceKw,
         feeReductionKw,
         netProfitKw,
@@ -91,8 +95,20 @@ export default function FeeCalculator() {
 
   const bestResult = useMemo(() => {
     if (!results || results.length === 0) return null;
-    return results.reduce((best, cur) => (cur.netProfitKw > best.netProfitKw ? cur : best), results[0]);
-  }, [results]);
+    const noCouponOption = {
+      id: 'none',
+      label: '不使用折扣券',
+      desc: '',
+      rate: 0,
+      priceKw: '',
+      couponPriceKw: 0,
+      feeReductionKw: 0,
+      netProfitKw: 0,
+      finalIncome: incomeWithoutCoupon,
+    };
+    const allOptions = [noCouponOption, ...results];
+    return allOptions.reduce((best, cur) => (cur.netProfitKw > best.netProfitKw ? cur : best), allOptions[0]);
+  }, [results, incomeWithoutCoupon]);
 
   const handleSellPriceChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const v = e.target.value;
@@ -311,7 +327,14 @@ export default function FeeCalculator() {
                 </h2>
                 <div className="bg-background-200/50 border border-primary-500/30 rounded-lg p-3 mb-3">
                   <div className="text-[11px] text-foreground-500 mb-1">推薦方案</div>
-                  <div className="text-primary-400 font-semibold text-sm mb-2">{bestResult.label}</div>
+                  <div className="text-primary-400 font-semibold text-sm mb-2">
+                    {bestResult.label}
+                    {bestResult.id === 'none' && (
+                      <span className="ml-1.5 text-[11px] text-foreground-500 font-normal">
+                        （折扣券價格過高，不使用更划算）
+                      </span>
+                    )}
+                  </div>
                   <div className="grid grid-cols-2 gap-3">
                     <div>
                       <div className="text-[11px] text-foreground-500 mb-0.5">最終收入</div>

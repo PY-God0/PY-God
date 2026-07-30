@@ -149,27 +149,37 @@ export default function Home() {
 
   const copyText = async (text: string): Promise<boolean> => {
     if (!text) return false;
-    try {
-      if (navigator.clipboard && window.isSecureContext) {
+    // Try modern clipboard API first
+    if (navigator.clipboard && window.isSecureContext) {
+      try {
         await navigator.clipboard.writeText(text);
         return true;
+      } catch {
+        // fall through to fallback
       }
-    } catch {
-      // fall through to fallback
     }
+    // Fallback: use textarea with execCommand
     try {
       const ta = document.createElement('textarea');
       ta.value = text;
       ta.setAttribute('readonly', '');
+      ta.setAttribute('contenteditable', 'true');
       ta.style.position = 'fixed';
-      ta.style.left = '-9999px';
+      ta.style.left = '0';
       ta.style.top = '0';
-      ta.style.opacity = '0';
-      ta.style.width = '1px';
-      ta.style.height = '1px';
+      ta.style.width = '2em';
+      ta.style.height = '2em';
+      ta.style.padding = '0';
+      ta.style.border = 'none';
+      ta.style.outline = 'none';
+      ta.style.boxShadow = 'none';
+      ta.style.background = 'transparent';
+      ta.style.color = 'transparent';
+      ta.style.pointerEvents = 'none';
+      ta.style.zIndex = '-9999';
       document.body.appendChild(ta);
       ta.focus();
-      ta.setSelectionRange(0, text.length);
+      ta.select();
       const ok = document.execCommand('copy');
       document.body.removeChild(ta);
       return ok;
@@ -195,7 +205,7 @@ export default function Home() {
         showToast('已複製結果');
       }
     } else {
-      showToast('複製失敗');
+      showToast('複製失敗，請手動選取文字後按 Ctrl+C');
     }
   };
 
@@ -203,12 +213,17 @@ export default function Home() {
     const b = computedBosses.find((x) => x.id === bossId);
     if (!b) return;
     const text = buildBossCopyText(b, state.mode, state.enableShard);
-    if (!text) return;
+    if (!text) {
+      showToast('尚無結果可複製');
+      return;
+    }
     const ok = await copyText(text);
     if (ok) {
       setCopiedBossId(bossId);
       window.setTimeout(() => setCopiedBossId((cur) => (cur === bossId ? null : cur)), 1500);
       showToast(`已複製 第${b.round}場${b.num}王 結果`);
+    } else {
+      showToast('複製失敗，請手動選取文字後按 Ctrl+C');
     }
   };
 
@@ -227,13 +242,18 @@ export default function Home() {
       text = buildShardOnlyCopyText(b);
       label = '碎片';
     }
-    if (!text) return;
+    if (!text) {
+      showToast(`尚無${label}結果可複製`);
+      return;
+    }
     const ok = await copyText(text);
     if (ok) {
       const key = `${bossId}-${slot}`;
       setCopiedSlot(key);
       window.setTimeout(() => setCopiedSlot((cur) => (cur === key ? null : cur)), 1500);
       showToast(`已複製 第${b.round}場${b.num}王 ${label}`, slot);
+    } else {
+      showToast(`複製失敗，請手動選取文字後按 Ctrl+C`);
     }
   };
 
