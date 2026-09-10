@@ -94,7 +94,7 @@ export const darkErgWeaponEffects: DarkErgWeaponEffect[] = [
 ];
 
 export const darkErgCrystalSources: DarkErgCrystalSource[] = [
-  { label: '副本固定獎勵', value: '100 顆' },
-  { label: '團隊 Roll 箱', value: '300 / 500 顆' },
-  { label: '保底商店', value: '7 保底點數 → 100 顆' },
+  { label: '副本固定獎勵', value: '黑暗聚能結晶(100)' },
+  { label: '團隊 Roll 箱', value: '黑暗聚能結晶(300/500)' },
+  { label: '保底商店', value: '7 保底點數 → 黑暗聚能結晶(100)' },
 ];
