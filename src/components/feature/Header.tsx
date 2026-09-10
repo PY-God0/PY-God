@@ -24,7 +24,7 @@ export default function Header({ rightContent }: HeaderProps) {
             />
             <div className="leading-tight hidden sm:block">
               <span className="text-base font-bold text-foreground-950">PY之神</span>
-              <span className="text-xs text-foreground-400 ml-1">v2.1</span>
+              <span className="text-xs text-foreground-400 ml-1">v4.2</span>
             </div>
           </Link>
           <div className="flex items-center bg-background-200 rounded-full px-1 py-1">
