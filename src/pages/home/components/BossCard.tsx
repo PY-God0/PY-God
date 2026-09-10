@@ -105,7 +105,7 @@ export default function BossCard({
           <div className="rounded-lg bg-primary-950/30 border border-primary-700/50 p-3">
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center">
-                <img src="https://static.readdy.ai/image/89724625b6278e5f6dc53214dbe45c52/62734b7b4a38772352d755938ef364e1.png" alt="" className="w-8 h-8 object-contain" />
+                <img src="https://mabires.pril.cc/invimage/cn/5300217/5300217.png" alt="" className="w-8 h-8 object-contain" />
               </div>
               <div className="flex items-center gap-1">
                 <button
@@ -162,7 +162,7 @@ export default function BossCard({
           <div className="rounded-lg bg-accent-950/30 border border-accent-700/50 p-3">
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center">
-                <img src="https://public.readdy.ai/ai/img_res/8b6bbfd3-e4a9-4ace-b77c-986532e0692f.png" alt="" className="w-8 h-8 object-contain" />
+                <img src="https://mabires.pril.cc/invimage/cn/5100333/5100333.png" alt="" className="w-8 h-8 object-contain" />
               </div>
               <div className="flex items-center gap-1">
                 <button
@@ -219,7 +219,7 @@ export default function BossCard({
           <div className="rounded-lg bg-amber-950/20 border border-amber-700/40 p-3">
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center">
-                <img src="https://public.readdy.ai/ai/img_res/a7137356-af6e-46c2-903c-8e51caaef416.png" alt="" className="w-8 h-8 object-contain" />
+                <img src="https://mabires.pril.cc/invimage/cn/5120209/5120209.png" alt="" className="w-8 h-8 object-contain" />
               </div>
               <div className="flex items-center gap-1">
                 <button

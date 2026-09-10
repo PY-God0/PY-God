@@ -8,9 +8,9 @@ interface Props {
 }
 
 const OPTIONS: { key: RollMode; label: string; icon: string; customImg?: string; customImg2?: string }[] = [
-  { key: 'both', label: '珠子 + 聖水', icon: 'ri-shining-2-line', customImg: 'https://static.readdy.ai/image/89724625b6278e5f6dc53214dbe45c52/62734b7b4a38772352d755938ef364e1.png', customImg2: 'https://public.readdy.ai/ai/img_res/8b6bbfd3-e4a9-4ace-b77c-986532e0692f.png' },
-  { key: 'bead', label: '只輪珠子', icon: 'ri-bubble-chart-line', customImg: 'https://static.readdy.ai/image/89724625b6278e5f6dc53214dbe45c52/62734b7b4a38772352d755938ef364e1.png' },
-  { key: 'holy', label: '只輪聖水', icon: 'ri-drop-line', customImg: 'https://public.readdy.ai/ai/img_res/8b6bbfd3-e4a9-4ace-b77c-986532e0692f.png' },
+  { key: 'both', label: '珠子 + 聖水', icon: 'ri-shining-2-line', customImg: 'https://mabires.pril.cc/invimage/cn/5300217/5300217.png', customImg2: 'https://mabires.pril.cc/invimage/cn/5100333/5100333.png' },
+  { key: 'bead', label: '只輪珠子', icon: 'ri-bubble-chart-line', customImg: 'https://mabires.pril.cc/invimage/cn/5300217/5300217.png' },
+  { key: 'holy', label: '只輪聖水', icon: 'ri-drop-line', customImg: 'https://mabires.pril.cc/invimage/cn/5100333/5100333.png' },
 ];
 
 export default function ModeSelector({ mode, enableShard, onModeChange, onShardToggle }: Props) {
@@ -64,7 +64,7 @@ export default function ModeSelector({ mode, enableShard, onModeChange, onShardT
         >
           <span className="flex items-center gap-2 text-sm text-foreground-700">
             <div className="w-7 h-7 rounded-md flex items-center justify-center overflow-hidden">
-              <img src="https://public.readdy.ai/ai/img_res/a7137356-af6e-46c2-903c-8e51caaef416.png" alt="" className="w-7 h-7 object-contain mix-blend-screen" />
+              <img src="https://mabires.pril.cc/invimage/cn/5120209/5120209.png" alt="" className="w-7 h-7 object-contain mix-blend-screen" />
             </div>
             裂痕的碎片
           </span>

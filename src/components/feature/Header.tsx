@@ -9,6 +9,8 @@ export default function Header({ rightContent }: HeaderProps) {
   const location = useLocation();
   const isHome = location.pathname === '/' || location.pathname === '';
   const isFee = location.pathname.startsWith('/fee-calculator');
+  const isEnergy = location.pathname.startsWith('/energy-release');
+  const isDarkErg = location.pathname.startsWith('/dark-erg');
 
   return (
     <header className="sticky top-0 z-20 bg-background-100/90 backdrop-blur border-b border-background-200">
@@ -45,6 +47,26 @@ export default function Header({ rightContent }: HeaderProps) {
               }`}
             >
               手續費計算機
+            </Link>
+            <Link
+              to="/energy-release"
+              className={`px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition ${
+                isEnergy
+                  ? 'bg-primary-500 text-white'
+                  : 'text-foreground-500 hover:text-foreground-300'
+              }`}
+            >
+              聚能開放
+            </Link>
+            <Link
+              to="/dark-erg"
+              className={`px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition ${
+                isDarkErg
+                  ? 'bg-primary-500 text-white'
+                  : 'text-foreground-500 hover:text-foreground-300'
+              }`}
+            >
+              黑暗聚能
             </Link>
           </div>
         </div>
